@@ -52,16 +52,16 @@ function App() {
                 name={budget.name}
                 amount={amount}
                 max={budget.max}
-                openAddExpenseClick={() => openAddExpenseModal(budget.id)}
-                openViewExpenseClick={() =>
+                onAddExpenseClick={() => openAddExpenseModal(budget.id)}
+                onViewExpensesClick={() =>
                   setViewExpensesModalBudgetId(budget.id)
                 }
               />
             );
           })}
           <UncategorizedBudgetCard
-            openAddExpenseClick={openAddExpenseModal}
-            openViewExpenseClick={() =>
+            onAddExpenseClick={openAddExpenseModal}
+            onViewExpensesClick={() =>
               setViewExpensesModalBudgetId(UNCATEGORIZED_BUDGET_ID)
             }
           />
