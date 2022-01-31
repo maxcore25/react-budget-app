@@ -20,7 +20,7 @@ export default function AddExpenseModal({
     e.preventDefault();
     addExpense({
       description: descriptionRef.current.value,
-      max: parseFloat(amountRef.current.value),
+      amount: parseFloat(amountRef.current.value),
       budgetId: budgetIdRef.current.value,
     });
     handleClose();

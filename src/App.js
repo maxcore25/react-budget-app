@@ -37,7 +37,9 @@ function App() {
           }}>
           {budgets.map(budget => {
             const amount = getBudgetExpenses(budget.id).reduce(
-              (total, expense) => total + expense.amount,
+              (total, expense) => {
+                return total + expense.amount;
+              },
               0
             );
             return (
@@ -58,6 +60,7 @@ function App() {
       />
       <AddExpenseModal
         show={showAddExpenseModal}
+        defaultBudgetId={addExpenseModalBudgetId}
         handleClose={() => setShowAddExpenseModal(false)}
       />
     </>
