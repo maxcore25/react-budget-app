@@ -7,6 +7,7 @@ export default function BudgetCard({
   amount,
   max,
   gray,
+  hideButtons,
   openAddExpenseClick,
 }) {
   const classNames = [];
@@ -23,27 +24,33 @@ export default function BudgetCard({
           <div className='me-2'>{name}</div>
           <div className='d-flex align-items-baseline'>
             {currencyFormatter.format(amount)}
-            <span className='text-muted fs-6 ms-1'>
-              / {currencyFormatter.format(max)}
-            </span>
+            {max && (
+              <span className='text-muted fs-6 ms-1'>
+                / {currencyFormatter.format(max)}
+              </span>
+            )}
           </div>
         </Card.Title>
-        <ProgressBar
-          className='rounded-pill'
-          variant={getProgressBarVariant(amount, max)}
-          min={0}
-          now={amount}
-          max={max}
-        />
-        <Stack direction='horizontal' gap='2' className='mt-4'>
-          <Button
-            variant='outline-primary'
-            className='ms-auto'
-            onClick={openAddExpenseClick}>
-            Add Expense
-          </Button>
-          <Button variant='outline-secondary'>View Expenses</Button>
-        </Stack>
+        {max && (
+          <ProgressBar
+            className='rounded-pill'
+            variant={getProgressBarVariant(amount, max)}
+            min={0}
+            now={amount}
+            max={max}
+          />
+        )}
+        {!hideButtons && (
+          <Stack direction='horizontal' gap='2' className='mt-4'>
+            <Button
+              variant='outline-primary'
+              className='ms-auto'
+              onClick={openAddExpenseClick}>
+              Add Expense
+            </Button>
+            <Button variant='outline-secondary'>View Expenses</Button>
+          </Stack>
+        )}
       </Card.Body>
     </Card>
   );
